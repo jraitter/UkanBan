@@ -35,6 +35,14 @@ class TaskService {
     }
   }
 
+  async addComment(id, body) {
+    return await dbContext.Tasks.findOneAndUpdate({ _id: id }, { $addToSet: { comments: body } }, { new: true })
+  }
+
+  async deleteComment(id, commentId) {
+    return await dbContext.Tasks.findOneAndUpdate({ _id: id }, { $pull: { comments: { _id: commentId } } }, { new: true })
+  }
+
 }
 
 

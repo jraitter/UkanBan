@@ -2,9 +2,16 @@ import mongoose from "mongoose"
 let Schema = mongoose.Schema
 let ObjectId = Schema.Types.ObjectId
 
+const SubComment = new Schema({
+  title: { type: String, required: true },
+  creatorEmail: { type: String, required: true }
+}, { timestamps: true, toJSON: { virtuals: true } })
+
+
 const Task = new Schema({
   title: { type: String, required: true },
   creatorEmail: { type: String, required: true },
+  comments: [SubComment],
   boardId: { type: ObjectId, ref: 'Board', required: true },
   listId: { type: ObjectId, ref: 'List', required: true }
 }, { timestamps: true, toJSON: { virtuals: true } })

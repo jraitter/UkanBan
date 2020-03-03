@@ -14,8 +14,10 @@ export class TasksController extends BaseController {
       .get('', this.getAll)
       .get('/:id', this.getById)
       .post('', this.create)
+      .post("/:id/comments", this.createComment)
       .put('/:id', this.edit)
       .delete('/:id', this.delete)
+      .delete("/:id/comments/:commentId", this.deleteComment)
   }
 
 
@@ -56,6 +58,27 @@ export class TasksController extends BaseController {
       return res.send("Successfully deleted")
     } catch (error) { next(error) }
   }
-}
 
+
+  async createComment(req, res, next) {
+    try {
+      let taskFound = await taskService.addComment(req.params.id, req.body)
+      if (taskFound) {
+        return res.send(taskFound)
+      }
+    } catch (error) {
+      next(error)
+    }
+  }
+  async deleteComment(req, res, next) {
+    try {
+      let result = await taskService.deleteComment(req.params.id, req.params.commentId)
+      if (result) {
+        res.send("Comment deleted")
+      }
+    } catch (error) {
+      next(error)
+    }
+  }
+}
 
