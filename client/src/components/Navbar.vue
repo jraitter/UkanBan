@@ -1,16 +1,9 @@
 <template>
   <nav class="navbar navbar-expand-md navbar-light bg-light">
-    <router-link class="navbar-brand" :to="{ name: 'home' }">
-      <i class="fa-3x fas fa-tree"></i>
-      <div class="row">
-        <div class="col-3">
-          <div v-if="$auth.isAuthenticated">
-            <img class="rounded-circle" :src="profile.picture" :alt="profile.name" height="45" />
-            <span class="ml-2">{{profile.name}}</span>
-          </div>
-        </div>
-      </div>
-    </router-link>
+
+    <router-link class="navbar-brand" :to="{ name: 'home' }">Ukanban</router-link>
+    <img src="mountain.png" style="height:50px;width:50px;" />
+
     <button
       class="navbar-toggler"
       type="button"
