@@ -1,6 +1,16 @@
 <template>
   <nav class="navbar navbar-expand-md navbar-light bg-light">
-    <router-link class="navbar-brand" :to="{ name: 'home' }">Ukanban</router-link>
+    <router-link class="navbar-brand" :to="{ name: 'home' }">
+      <i class="fa-3x fas fa-tree"></i>
+      <div class="row">
+        <div class="col-3">
+          <div v-if="$auth.isAuthenticated">
+            <img class="rounded-circle" :src="profile.picture" :alt="profile.name" height="45" />
+            <span class="ml-2">{{profile.name}}</span>
+          </div>
+        </div>
+      </div>
+    </router-link>
     <button
       class="navbar-toggler"
       type="button"
@@ -55,8 +65,17 @@ export default {
       this.$store.dispatch("resetBearer");
       this.$router.push({ name: "home" });
     }
+  },
+  computed: {
+    profile() {
+      return this.$store.state.user;
+    }
   }
 };
 </script>
 
-<style></style>
+<style scoped>
+.fas {
+  color: green;
+}
+</style>
