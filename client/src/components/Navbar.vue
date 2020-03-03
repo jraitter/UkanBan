@@ -1,7 +1,9 @@
 <template>
   <nav class="navbar navbar-expand-md navbar-light bg-light">
+
     <router-link class="navbar-brand" :to="{ name: 'home' }">Ukanban</router-link>
     <img src="mountain.png" style="height:50px;width:50px;" />
+
     <button
       class="navbar-toggler"
       type="button"
@@ -56,8 +58,17 @@ export default {
       this.$store.dispatch("resetBearer");
       this.$router.push({ name: "home" });
     }
+  },
+  computed: {
+    profile() {
+      return this.$store.state.user;
+    }
   }
 };
 </script>
 
-<style></style>
+<style scoped>
+.fas {
+  color: green;
+}
+</style>
