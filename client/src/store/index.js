@@ -19,6 +19,7 @@ export default new Vuex.Store({
     user: {},
     boards: [],
     lists: [],
+    tasks: {},
     activeBoard: {}
   },
   mutations: {
@@ -87,7 +88,6 @@ export default new Vuex.Store({
 
     async getListsByBoardId({ commit, dispatch }, boardId) {
       try {
-        // let res = await api.get("lists/");
         let res = await api.get('boards/' + boardId + '/lists');
         commit("setLists", res.data)
       } catch (e) {
@@ -95,18 +95,15 @@ export default new Vuex.Store({
       }
     },
 
-
-    // getLists({ commit, dispatch }, boardId) {
-    //   api.get('boards/' + boardId + '/lists')
-    //     .then(res => { commit('setLists'), res.data })
-    // },
-
-
-    addList({ commit, dispatch }, listData) {
-      api.post('lists', listData).then(serverList => {
+    async addList({ commit, dispatch }, listData) {
+      try {
+        let res = await api.post('lists', listData);
         dispatch('getListsByBoardId', listData.boardId)
-      })
+      } catch (e) {
+        console.error(e);
+      }
     },
+
     async deleteList({ commit, dispatch }, listData) {
       try {
         let res = await api.delete("/lists" + listData._id)

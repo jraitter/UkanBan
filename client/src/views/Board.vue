@@ -3,13 +3,17 @@
     <h1 v-if="board.title">{{board.title}}</h1>
     <h1 v-else>Loading, if page does not load, refresh</h1>
     <div class="row lists-row scrollable">
-      <list v-for="(listObj) in lists" :key="listObj._id" :listData="listObj" />
+      <div class="col-8">
+        <list v-for="(listObj) in lists" :key="listObj._id" :listData="listObj" />
+      </div>
+      <create-list />
     </div>
   </div>
 </template>
 
 <script>
 import list from "@/components/List";
+import CreateList from "@/components/CreateList";
 export default {
   name: "board",
   mounted() {
@@ -34,7 +38,8 @@ export default {
     }
   },
   components: {
-    list
+    list,
+    CreateList
   },
   methods: {
     setActiveBoard() {
