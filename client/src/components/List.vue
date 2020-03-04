@@ -3,7 +3,7 @@
     <div class="col-2">
       <div class="card">
         <div class="card-body">
-          <h4 class="card-title">{{list.name}}</h4>
+          <h4 class="card-title">{{listData.title}}</h4>
           <p class="card-text">Tasks</p>
         </div>
       </div>
@@ -14,15 +14,12 @@
 
 <script>
 export default {
-  name: "home",
+  name: "list",
+  props: ["listData"],
   data() {
     return {};
   },
-  computed: {
-    profile() {
-      return this.$store.state.user;
-    }
-  },
+  computed: {},
   methods: {},
   components: {}
 };
