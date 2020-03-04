@@ -18,6 +18,7 @@ export default new Vuex.Store({
   state: {
     user: {},
     boards: [],
+    lists: [],
     activeBoard: {}
   },
   mutations: {
@@ -29,7 +30,10 @@ export default new Vuex.Store({
     },
     setActiveBoard(state, board) {
       state.activeBoard = board;
-    }
+    },
+    setLists(state, lists) {
+      state.lists = lists;
+    },
   },
   actions: {
     //#region -- AUTH STUFF --
@@ -68,20 +72,40 @@ export default new Vuex.Store({
     },
 
     addBoard({ commit, dispatch }, boardData) {
-      api.post('boards', boardData)
+      api.post('boards/', boardData)
         .then(serverBoard => {
           dispatch('getBoards')
         })
     },
     setActiveBoard({ commit }, board) {
       commit("setActiveBoard", board)
-    }
+    },
     //#endregion
 
 
     //#region -- LISTS --
 
+    getLists({ commit, dispatch }, boardId) {
+      api.get('boards' + boardId + '/lists')
+        .then(res => { commit('setLists'), res.data })
 
+    },
+    addList({ commit, dispatch }, listData) {
+      api.post('lists', listData).then(serverList => {
+        dispatch('getLists', listData.boardId)
+      })
+    },
+    async deleteList({ commit, dispatch }, listData) {
+      try {
+        let res = await api.delete("/lists" + listData._id)
+        commit("getLists", listData.boardId)
+      } catch (error) {
+        console.error(error)
+      }
+    },
+    //#endregion
+
+    //#region --TASKS--
 
     //#endregion
   }
