@@ -8,6 +8,14 @@
       </div>
       <create-list />
     </div>
+    <div class="row">
+      <div class="col-6">
+        <button
+          class="btn btn-block btn-danger"
+          @click="deleteBoard"
+        >Kill this Board and its children</button>
+      </div>
+    </div>
   </div>
 </template>
 
@@ -44,6 +52,10 @@ export default {
   methods: {
     setActiveBoard() {
       this.$store.dispatch("setActiveBoard", this.boardId);
+    },
+    deleteBoard() {
+      //add alert to ensure board should be deleted
+      this.$store.dispatch("deleteBoard", this.board._id);
     }
   }
 };
