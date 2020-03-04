@@ -1,11 +1,9 @@
 <template>
-  <div class="list">
-    <div class="col-2">
-      <div class="card">
-        <div class="card-body">
-          <h4 class="card-title">{{listData.title}}</h4>
-          <p class="card-text">Tasks</p>
-        </div>
+  <div class="list col-3">
+    <div class="card mx-4">
+      <div class="card-body">
+        <h5 class="card-title">{{listData.title}}</h5>
+        <p class="card-text">Tasks</p>
       </div>
     </div>
   </div>
@@ -27,4 +25,9 @@ export default {
 
 
 <style scoped>
+.card {
+  width: 14rem;
+  height: auto;
+  word-wrap: break-word;
+}
 </style>
