@@ -3,7 +3,7 @@
     <h1 v-if="board.title">{{board.title}}</h1>
     <h1 v-else>Loading, if page does not load, refresh</h1>
     <div class="row lists-row scrollable">
-      <div v-for="(listObj) in lists" :key="listObj._id" :listData="listObj">{{listData.title}}</div>
+      <list v-for="(listObj) in lists" :key="listObj._id" :listData="listObj" />
     </div>
   </div>
 </template>
@@ -20,8 +20,8 @@ export default {
         "setActiveBoard",
         this.$store.state.boards.find(b => b._id == this.$route.params.boardId)
       );
-      this.$store.dispatch("getLists", this.$route.params.boardId);
     }
+    this.$store.dispatch("getListsByBoardId", this.$route.params.boardId);
   },
   props: ["boardId"],
   computed: {

@@ -85,20 +85,32 @@ export default new Vuex.Store({
 
     //#region -- LISTS --
 
-    getLists({ commit, dispatch }, boardId) {
-      api.get('boards' + boardId + '/lists')
-        .then(res => { commit('setLists'), res.data })
-
+    async getListsByBoardId({ commit, dispatch }, boardId) {
+      try {
+        // let res = await api.get("lists/");
+        let res = await api.get('boards/' + boardId + '/lists');
+        commit("setLists", res.data)
+      } catch (e) {
+        console.error(e);
+      }
     },
+
+
+    // getLists({ commit, dispatch }, boardId) {
+    //   api.get('boards/' + boardId + '/lists')
+    //     .then(res => { commit('setLists'), res.data })
+    // },
+
+
     addList({ commit, dispatch }, listData) {
       api.post('lists', listData).then(serverList => {
-        dispatch('getLists', listData.boardId)
+        dispatch('getListsByBoardId', listData.boardId)
       })
     },
     async deleteList({ commit, dispatch }, listData) {
       try {
         let res = await api.delete("/lists" + listData._id)
-        commit("getLists", listData.boardId)
+        commit("getListsByBoardId", listData.boardId)
       } catch (error) {
         console.error(error)
       }
