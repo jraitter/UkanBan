@@ -1,8 +1,7 @@
 <template>
-  <nav class="navbar navbar-expand-md navbar-light bg-light">
-
+  <nav class="navbar navbar-expand-md navbar-light bg-dark">
     <router-link class="navbar-brand" :to="{ name: 'home' }">Ukanban</router-link>
-    <img src="mountain.png" style="height:50px;width:50px;" />
+    <img src="./mountain.png" style="height:50px;width:50px;" />
 
     <button
       class="navbar-toggler"
@@ -25,7 +24,7 @@
           v-if="$auth.isAuthenticated"
           :class="{ active: $route.name == 'boards' }"
         >
-          <router-link class="nav-link" :to="{ name: 'boards' }">My-Dashboard</router-link>
+          <router-link class="nav-link" :to="{ name: 'boards' }">My Boards</router-link>
         </li>
       </ul>
       <span class="navbar-text">
@@ -68,7 +67,4 @@ export default {
 </script>
 
 <style scoped>
-.fas {
-  color: green;
-}
 </style>
