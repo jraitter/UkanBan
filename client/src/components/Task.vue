@@ -2,7 +2,7 @@
   <div class="row">
     <div class="list col-12">
       <div class="card">
-        <button class="btn btn-block btn-danger">Delete</button>
+        <button class="btn btn-block btn-danger" @click="deleteTask">Delete</button>
         <div class="card-body">
           <h5 class="card-title">{{taskData.title}}</h5>
           <p class="card-text">comments, eventually</p>
@@ -21,7 +21,12 @@ export default {
     return {};
   },
   computed: {},
-  methods: {},
+  methods: {
+    deleteTask() {
+      //add alert to ensure board should be deleted
+      this.$store.dispatch("deleteTask", this.taskData);
+    }
+  },
   components: {}
 };
 </script>
