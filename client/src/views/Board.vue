@@ -61,6 +61,9 @@ export default {
 };
 </script>
 <style scoped>
+.board {
+  color: black;
+}
 .scrollable {
   overflow-x: scroll;
   overflow-y: hidden;
