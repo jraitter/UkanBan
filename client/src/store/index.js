@@ -151,7 +151,7 @@ export default new Vuex.Store({
     async deleteTask({ commit, dispatch }, taskData) {
       try {
         let res = await api.delete("/tasks/" + taskData._id)
-        dispatch("addTaskToDictionary", taskData.boardId)
+        dispatch("getTasksByListId", taskData.listId)
       } catch (error) {
         console.error(error)
       }
