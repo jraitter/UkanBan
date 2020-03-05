@@ -23,6 +23,10 @@ export default new Vuex.Store({
     activeBoard: {}
   },
   mutations: {
+    addTaskToDictionary(state, payload) {
+      Vue.set(state.tasks, payload.listId, payload.tasks)
+    },
+
     setUser(state, user) {
       state.user = user
     },
@@ -126,23 +130,19 @@ export default new Vuex.Store({
 
     //#region --TASKS--
 
-    addTask({ commit, dispatch }, taskData) {
-      console.log("taskData ", taskData)
-    },
-
     async updateTask({ commit, dispatch }, taskData) {
       try {
         let res = await api.post('tasks', taskData);
-        dispatch('addTaskToDictionary', taskData.boardId)
+        dispatch('getTasksByListId', taskData.listId)
       } catch (e) {
         console.error(e);
       }
     },
 
-    async getTasksByListId({ commit, dispatch }, ListId) {
+    async getTasksByListId({ commit, dispatch }, listId) {
       try {
-        let res = await api.get('lists/' + ListId + '/tasks');
-        commit("setLists", res.data)
+        let res = await api.get('lists/' + listId + '/tasks');
+        commit("addTaskToDictionary", { listId, tasks: res.data })
       } catch (e) {
         console.error(e);
       }

@@ -47,6 +47,6 @@ export default {
 }
 .intro-group {
   position: absolute;
-  top: 50%;
+  top: 30%;
 }
 </style>

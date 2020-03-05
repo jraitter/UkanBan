@@ -3,9 +3,7 @@
     <h1 v-if="board.title">{{board.title}}</h1>
     <h1 v-else>Loading, if page does not load, refresh</h1>
     <div class="row lists-row scrollable">
-      <div class="col-8">
-        <list v-for="(listObj) in lists" :key="listObj._id" :listData="listObj" />
-      </div>
+      <list v-for="(listObj) in lists" :key="listObj._id" :listData="listObj" />
       <create-list />
     </div>
     <div class="row">
