@@ -126,7 +126,7 @@ export default new Vuex.Store({
 
     //#region --TASKS--
 
-    addTask(taskData) {
+    addTask({ commit, dispatch }, taskData) {
       console.log("taskData ", taskData)
     },
 

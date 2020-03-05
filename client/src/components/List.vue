@@ -39,6 +39,7 @@ export default {
       this.newTask.boardId = this.$store.state.activeBoard._id;
       this.newTask.creatorEmail = this.$store.state.activeBoard.creatorEmail;
       this.newTask.listId = this.listData._id;
+      console.log("newTask ", this.newTask);
       this.$store.dispatch("addTask", this.newTask);
       this.newTask = { title: "" };
     }
