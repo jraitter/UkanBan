@@ -1,7 +1,7 @@
 <template>
   <nav class="navbar navbar-expand-md navbar-light bg-light">
     <router-link class="navbar-brand" :to="{ name: 'home' }">Ukanban</router-link>
-    <img src="..src/assets/mountain.png" style="height:50px;width:50px;" />
+    <img src="mountain.png" style="height:50px;width:50px;" />
 
     <button
       class="navbar-toggler"
