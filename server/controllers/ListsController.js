@@ -2,6 +2,7 @@ import express from 'express'
 import BaseController from "../utils/BaseController";
 import auth0provider from "@bcwdev/auth0provider";
 import { listService } from '../services/ListService'
+import { taskService } from '../services/TaskService'
 
 
 
@@ -13,6 +14,7 @@ export class ListsController extends BaseController {
       .use(auth0provider.getAuthorizedUserInfo)
       .get('', this.getAll)
       .get('/:id', this.getById)
+      .get('/:id/tasks', this.getTasksByListId)
       .post('', this.create)
       .put('/:id', this.edit)
       .delete('/:id', this.delete)
@@ -33,6 +35,16 @@ export class ListsController extends BaseController {
       let data = await listService.getById(req.params.id, req.userInfo.email)
       return res.send(data)
     } catch (error) { next(error) }
+  }
+
+
+  async getTasksByListId(req, res, next) {
+    try {
+      let data = await taskService.getByListId(req.params.id);
+      res.send(data);
+    } catch (error) {
+      next(error);
+    }
   }
 
   async create(req, res, next) {
