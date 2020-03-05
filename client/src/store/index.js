@@ -139,6 +139,16 @@ export default new Vuex.Store({
       }
     },
 
+    async moveTask({ commit, dispatch }, payload) {
+      try {
+        let res = await api.put('tasks/' + payload.taskData.id, { listId: payload.newListId });
+        dispatch('getTasksByListId', payload.taskData.listId)
+        dispatch('getTasksByListId', payload.newListId)
+      } catch (e) {
+        console.error(e);
+      }
+    },
+
     async getTasksByListId({ commit, dispatch }, listId) {
       try {
         let res = await api.get('lists/' + listId + '/tasks');
