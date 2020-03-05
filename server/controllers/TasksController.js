@@ -47,6 +47,7 @@ export class TasksController extends BaseController {
 
   async edit(req, res, next) {
     try {
+      req.body.creatorEmail = req.userInfo.email
       let data = await taskService.edit(req.params.id, req.userInfo.email, req.body)
       return res.send(data)
     } catch (error) { next(error) }
