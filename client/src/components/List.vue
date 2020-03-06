@@ -1,16 +1,27 @@
 <template>
-  <div class="list col-3">
-    <div class="card mx-4">
-      <div class="card-body">
-        <form @submit.prevent="addTask">
-          <input type="text" placeholder="task" v-model="newTask.title" required />
-          <button type="submit">Add Task!</button>
-        </form>
-        <button class="btn btn-block btn-danger" @click="deleteList">Kill this List</button>
-        <h5 class="card-title">{{listData.title}}</h5>
-        <task v-for="(taskObj) in tasks" :key="taskObj._id" :taskData="taskObj" />
+  <div class="list my-3">
+    <div class="col-4">
+      <div class="card mx-auto transparent">
+        <div class="card-body">
+          <div class="row">
+            <div class="col-9 p-0">
+              <form @submit.prevent="addTask">
+                <input type="text" placeholder="task" v-model="newTask.title" required />
+                <button class="btn btn-sm btn-light" type="submit">Add Task!</button>
+              </form>
+            </div>
+            <div class="col-3 p-0">
+              <button class="btn float-right" @click="deleteList">
+                <img src="./delete.png" />
+              </button>
+            </div>
+          </div>
+          <h5 class="card-title text-white">List: {{listData.title}}</h5>
+          <task v-for="(taskObj) in tasks" :key="taskObj._id" :taskData="taskObj" />
+        </div>
       </div>
     </div>
+    <div class="cl-4"></div>
   </div>
 </template>
 
@@ -60,8 +71,17 @@ export default {
 
 <style scoped>
 .card {
-  width: 14rem;
+  width: 25rem;
   height: auto;
   word-wrap: break-word;
+}
+.row {
+  margin-bottom: 2rem;
+}
+h5 {
+  margin-bottom: 2rem;
+}
+.transparent {
+  background-color: rgba(12, 12, 12, 0.5);
 }
 </style>

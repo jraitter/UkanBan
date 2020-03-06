@@ -1,5 +1,5 @@
 <template>
-  <nav class="navbar navbar-expand-md navbar-light bg-dark">
+  <nav class="navbar navbar-expand-md navbar-light text-black navbar-color">
     <router-link class="navbar-brand" :to="{ name: 'home' }">Ukanban</router-link>
     <img src="./mountain.png" style="height:50px;width:50px;" />
 
@@ -67,4 +67,7 @@ export default {
 </script>
 
 <style scoped>
+.navbar-color {
+  background-color: rgb(109, 111, 116);
+}
 </style>

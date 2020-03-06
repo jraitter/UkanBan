@@ -1,41 +1,48 @@
 <template>
   <div class="row">
     <div class="list col-12">
-      <div class="card">
-        <button class="btn btn-block btn-danger" @click="deleteTask">Delete</button>
-        <div class="dropdown">
-          <button
-            class="btn btn-secondary dropdown-toggle"
-            type="button"
-            id="dropdownMenuButton"
-            data-toggle="dropdown"
-            aria-haspopup="true"
-            aria-expanded="false"
-          >Move Task</button>
-
-          <form @submit.prevent="addComment">
-            <input type="text" placeholder="comment" v-model="newComment.title" required />
-            <button type="submit">Add Comment!</button>
-          </form>
-
-          <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
-            <a
-              @click="moveTask(listObj.id)"
-              v-for="(listObj) in lists"
-              v-show="listObj.id!=taskData.listId"
-              :key="listObj._id"
-              class="dropdown-item"
-            >{{listObj.title}}</a>
+      <div class="card transparent">
+        <div class="row">
+          <div class="col-4 p-0">
+            <button
+              class="btn btn-secondary dropdown-toggle float-left"
+              type="button"
+              id="dropdownMenuButton"
+              data-toggle="dropdown"
+              aria-haspopup="true"
+              aria-expanded="false"
+            >Move Task</button>
+            <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+              <a
+                @click="moveTask(listObj.id)"
+                v-for="(listObj) in lists"
+                v-show="listObj.id!=taskData.listId"
+                :key="listObj._id"
+                class="dropdown-item"
+              >{{listObj.title}}</a>
+            </div>
+          </div>
+          <div class="col-8 p-0">
+            <button class="btn float-right" @click="deleteTask">
+              <img src="./delete.png" />
+            </button>
+            <form @submit.prevent="addComment">
+              <input type="text" placeholder="comment" v-model="newComment.title" required />
+              <button type="submit">+</button>
+            </form>
           </div>
         </div>
-
-        <div class="card-body">
-          <h5 class="card-title">{{taskData.title}}</h5>
-          <p v-for="(comment) in taskData.comments" :key="comment.id" class="card-text">
-            <button @click="deleteComment(comment.id)" class="btn btn-sm text-danger">X</button>
-            {{comment.title}}
-          </p>
+        <div class="row">
+          <div class="col-12"></div>
         </div>
+      </div>
+
+      <div class="card-body" id="card">
+        <h5 class="card-title">Task: {{taskData.title}}</h5>
+        <p v-for="(comment) in taskData.comments" :key="comment.id" class="card-text">
+          <button @click="deleteComment(comment.id)" class="btn btn-sm text-danger">X</button>
+          {{comment.title}}
+        </p>
       </div>
     </div>
   </div>
@@ -89,4 +96,17 @@ export default {
 </script>
 
  <style scoped>
+#card {
+  color: whitesmoke;
+  border-style: solid;
+  border-width: 1px;
+  border-color: white;
+  border-radius: 8px;
+}
+.transparent {
+  background-color: rgba(12, 12, 12, 0.5);
+}
+input {
+  width: 69%;
+}
 </style>
