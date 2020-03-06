@@ -13,6 +13,11 @@
             aria-expanded="false"
           >Move Task</button>
 
+          <form @submit.prevent="addComment">
+            <input type="text" placeholder="comment" v-model="newComment.title" required />
+            <button @click="addComment" type="submit">Add Comment!</button>
+          </form>
+
           <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
             <a
               @click="moveTask(listObj.id)"
@@ -26,7 +31,10 @@
 
         <div class="card-body">
           <h5 class="card-title">{{taskData.title}}</h5>
-          <p class="card-text">comments, eventually</p>
+          <p v-for="(comment) in taskData.comments" :key="comment.id" class="card-text">
+            <button @click="deleteComment(comment.id)" class="btn btn-sm text-danger">X</button>
+            {{comment.title}}
+          </p>
         </div>
       </div>
     </div>
@@ -38,8 +46,11 @@
 export default {
   name: "task",
   props: ["taskData"],
+  mounted() {},
   data() {
-    return {};
+    return {
+      newComment: { title: "" }
+    };
   },
   computed: {
     lists() {
@@ -57,6 +68,20 @@ export default {
         taskData: this.taskData
       };
       this.$store.dispatch("moveTask", payload);
+    },
+    addComment() {
+      let payload = {
+        comment: this.newComment.title,
+        taskData: this.taskData
+      };
+      this.$store.dispatch("addComment", payload);
+    },
+    deleteComment(id) {
+      let payload = {
+        commentId: id,
+        taskData: this.taskData
+      };
+      this.$store.dispatch("deleteComment", payload);
     }
   },
   components: {}

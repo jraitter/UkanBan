@@ -167,6 +167,24 @@ export default new Vuex.Store({
       }
     },
 
+    async addComment({ commit, dispatch }, payload) {
+      try {
+        let res = await api.post('tasks/' + payload.taskData.id + '/comments', payload.comment);
+        dispatch('getTasksByListId', payload.taskData.listId)
+      } catch (error) {
+        console.error(error)
+      }
+    },
+
+    async deleteComment({ commit, dispatch }, payload) {
+      try {
+        let res = await api.delete("/tasks/" + payload.taskData.id + "/comments/" + payload.commentId)
+        dispatch('getTasksByListId', payload.taskData.listId)
+      } catch (e) {
+        console.error(e);
+      }
+    }
+
     //#endregion
   }
 })
