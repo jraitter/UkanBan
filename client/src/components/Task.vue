@@ -15,7 +15,7 @@
 
           <form @submit.prevent="addComment">
             <input type="text" placeholder="comment" v-model="newComment.title" required />
-            <button @click="addComment" type="submit">Add Comment!</button>
+            <button type="submit">Add Comment!</button>
           </form>
 
           <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
