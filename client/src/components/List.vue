@@ -1,5 +1,5 @@
 <template>
-  <div class="list my-3">
+  <div class="list my-5">
     <div class="col-4">
       <div class="card mx-auto transparent">
         <div class="card-body">
