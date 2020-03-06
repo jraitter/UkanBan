@@ -2,19 +2,19 @@
   <div class="container-fluid home">
     <div class="intro-group">
       <div class="row">
-        <div class="col-12 my-3">
+        <div class="col-12 mx-auto my-3">
           <h1 class="intro">Welcome to Ukanban</h1>
         </div>
       </div>
       <div class="row my-3">
-        <div class="col-12">
+        <div class="col-12 mx-auto">
           <h3
             class="intro"
           >Ukanban is the kanban application to help you and your team climb any mountain of tasks</h3>
         </div>
       </div>
       <div class="row">
-        <div class="col-12">
+        <div class="col-12 mx-auto">
           <h5 class="intro">Log in and go to 'My Boards' to get started</h5>
         </div>
       </div>
@@ -44,9 +44,12 @@ export default {
 }
 .intro {
   color: floralwhite;
+  display: flex;
+  justify-content: center;
 }
 .intro-group {
   position: absolute;
   top: 30%;
+  left: 15%;
 }
 </style>
