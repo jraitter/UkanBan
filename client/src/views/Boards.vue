@@ -49,9 +49,10 @@ export default {
 </script>
 <style>
 .boards {
-  height: 100vh;
-  background-image: url(./stephen-leonardi-i0cIm__zTrM-unsplash.jpg);
+  min-height: 100vh;
   background-size: cover;
+  background-position: center;
+  background-image: url(./stephen-leonardi-i0cIm__zTrM-unsplash.jpg);
 }
 .board {
   color: white;

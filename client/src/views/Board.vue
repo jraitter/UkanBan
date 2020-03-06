@@ -2,17 +2,14 @@
   <div class="board">
     <h1 v-if="board.title">{{board.title}}</h1>
     <h1 v-else>Loading, if page does not load, refresh</h1>
+    <div class="row my-2">
+      <create-list />
+      <div class="col-6">
+        <button class="btn btn-sm btn-danger float-right mr-2" @click="deleteBoard">Delete Board</button>
+      </div>
+    </div>
     <div class="row lists-row scrollable">
       <list v-for="(listObj) in lists" :key="listObj._id" :listData="listObj" />
-      <create-list />
-    </div>
-    <div class="row">
-      <div class="col-6">
-        <button
-          class="btn btn-block btn-danger"
-          @click="deleteBoard"
-        >Kill this Board and its children</button>
-      </div>
     </div>
   </div>
 </template>
@@ -60,12 +57,14 @@ export default {
 </script>
 <style scoped>
 .board {
+  min-height: 100vh;
+  background-image: url(./alex_rainer-fDqQOu13nUo-unsplash.jpg);
+  background-size: cover;
   color: black;
 }
 .scrollable {
   overflow-x: scroll;
-  overflow-y: hidden;
-  white-space: nowrap;
+  flex-wrap: nowrap;
 }
 .card {
   display: inline-block;
