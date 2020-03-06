@@ -106,6 +106,9 @@ export default {
 .transparent {
   background-color: rgba(12, 12, 12, 0.5);
 }
+.card-text {
+  background-color: rgba(1, 1, 1, 0.75);
+}
 input {
   width: 69%;
 }

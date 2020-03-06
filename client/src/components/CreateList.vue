@@ -1,8 +1,8 @@
 <template>
-  <div class="create-list col-6">
+  <div class="create-list">
     <form class="float-left ml-2" @submit.prevent="addList">
       <input type="text" placeholder="title" v-model="newList.title" required />
-      <button class="btn btn-block btn-light" type="submit">Add List!</button>
+      <button class="btn btn-sm btn-light" type="submit">Add A New List</button>
     </form>
   </div>
 </template>

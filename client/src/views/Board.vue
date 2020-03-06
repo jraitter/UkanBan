@@ -3,7 +3,9 @@
     <h1 v-if="board.title">{{board.title}}</h1>
     <h1 v-else>Loading, if page does not load, refresh</h1>
     <div class="row my-2">
-      <create-list />
+      <div class="col-6">
+        <create-list />
+      </div>
       <div class="col-6">
         <button class="btn btn-sm btn-danger float-right mr-2" @click="deleteBoard">Delete Board</button>
       </div>
@@ -65,6 +67,9 @@ export default {
 .scrollable {
   overflow-x: scroll;
   flex-wrap: nowrap;
+}
+.lists-row::-webkit-scrollbar-track {
+  background: transparent;
 }
 .card {
   display: inline-block;

@@ -13,7 +13,7 @@
           <router-link
             class="board"
             :to="{name: 'board', params: {boardId: board._id}}"
-          >{{board.title}}</router-link>
+          >{{board.title}} - {{board.description}}</router-link>
         </div>
       </div>
     </div>
