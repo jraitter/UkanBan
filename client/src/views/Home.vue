@@ -2,6 +2,11 @@
   <div class="container-fluid home">
     <div class="intro-group">
       <div class="row">
+        <div class="col-12">
+          <img src="./mountain.png" height="100rem" width="100rem" />
+        </div>
+      </div>
+      <div class="row">
         <div class="col-12 mx-auto my-3">
           <h1 class="intro">Welcome to Ukanban</h1>
         </div>
@@ -50,6 +55,6 @@ export default {
 .intro-group {
   position: absolute;
   top: 30%;
-  left: 15%;
+  left: 18%;
 }
 </style>
